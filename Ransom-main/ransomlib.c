@@ -55,18 +55,18 @@ int encrypt(unsigned char *key, unsigned char *iv, char *plaintext_file)
         handleErrors();
 
     /*
-     * Initialise the encryption operation. IMPORTANT - ensure you use a key
-     * and IV size appropriate for your cipher
-     * In this example we are using 256 bit AES (i.e. a 256 bit key). The
-     * IV size for *most* modes is the same as the block size. For AES this
-     * is 128 bits
+	 * Initialisez l'opération de chiffrement. IMPORTANT - assurez-vous d'utiliser une clé
+     * et taille IV appropriée pour votre chiffrement
+     * Dans cet exemple, nous utilisons AES 256 bits (c'est-à-dire une clé de 256 bits). Le
+     * La taille IV pour *la plupart* des modes est la même que la taille du bloc. Pour AES ceci
+     * est de 128 bits
      */
     if(1 != EVP_EncryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, key, iv))
         handleErrors();
 
     /*
-     * Provide the message to be encrypted, and obtain the encrypted output.
-     * EVP_EncryptUpdate can be called multiple times if necessary
+     * Fournissez le message à chiffrer et obtenez la sortie chiffrée.
+     * EVP_EncryptUpdate peut être appelé plusieurs fois si nécessaire
      */
     num_bytes_read = fread(in_buf, sizeof(unsigned char), BUFSIZE, fIN);
 
@@ -83,8 +83,8 @@ int encrypt(unsigned char *key, unsigned char *iv, char *plaintext_file)
         handleErrors();
 
     /*
-     * Finalise the encryption. Further ciphertext bytes may be written at
-     * this stage.
+     * Finalisez le cryptage. D'autres octets de texte chiffré peuvent être écrits à
+     * cette étape.
      */
 
     fwrite(out_buf, sizeof(unsigned char), out_len, fOUT);
@@ -127,18 +127,18 @@ int decrypt(unsigned char *key, unsigned char *iv, char *cipher_file)
         handleErrors();
 
     /*
-     * Initialise the decryption operation. IMPORTANT - ensure you use a key
-     * and IV size appropriate for your cipher
-     * In this example we are using 256 bit AES (i.e. a 256 bit key). The
-     * IV size for *most* modes is the same as the block size. For AES this
-     * is 128 bits
+     * Initialiser l'opération de déchiffrement. IMPORTANT - assurez-vous d'utiliser une clé
+     * et taille IV appropriée pour votre chiffrement
+     * Dans cet exemple, nous utilisons AES 256 bits (c'est-à-dire une clé de 256 bits). Le
+     * La taille IV pour *la plupart* des modes est la même que la taille du bloc. Pour AES ceci
+     * est de 128 bits
      */
     if(1 != EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, key, iv))
         handleErrors();
 
     /*
-     * Provide the message to be decrypted, and obtain the plaintext output.
-     * EVP_DecryptUpdate can be called multiple times if necessary.
+     * Fournissez le message à déchiffrer et obtenez la sortie en clair.
+     * EVP_DecryptUpdate peut être appelé plusieurs fois si nécessaire.
      */
     num_bytes_read = fread(in_buf, sizeof(unsigned char), BUFSIZE, fIN);
 

