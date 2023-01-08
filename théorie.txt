@@ -36,6 +36,9 @@ Le casting en C consiste à changer explicitement le type de données d'une vari
 C’est quoi une constante en C ? Peux-tu en citer 2 de types différents ?
 Permet de définir une variable (adresse en mémoire) dont la valeur ne change pas durant l’exécution.
 
+soit via #define identificateur valeur
+soir via const type variable = valeur;
+
 Quelles sont les fonctions usuelles où il est nécessaire de préciser le type de variable à utiliser ?
 Malloc, realloc, calloc & sizeof, sin(), cos() et tan(), strlen() et strcpy(), 
 
