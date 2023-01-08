@@ -1,0 +1,220 @@
+À quoi sert la phase préprocesseur dans le processus de compilation ?
+
+la phase préprocesseur permet de rendre le code source plus lisible et de le préparer à la compilation en ajoutant ou en supprimant du code, en fonction des directives de préprocesseur utilisées.
+
+À quoi sert la compilation ?
+
+La compilation est le processus par lequel un programme écrit dans un langage de programmation est transformé en un programme exécutable par un ordinateur.
+
+Quel est l’intérêt de typer des variables en C ?
+
+Plusieurs raisons: 
+- optimisation du code
+- gestion de la mémoire
+- sécurité du type
+
+En quoi consiste une librairie en C ?
+Une librairie en C est un ensemble de fonctions, de variables et de données précompilées qui peuvent être utilisées par un programme pour effectuer diverses tâches. Les librairies permettent de réutiliser du code existant dans de nouveaux projets, ce qui peut être très utile et économiser du temps et des ressources.
+
+
+Les types
+
+peux-tu citer différents types en C ? A quoi cela sert-il ? 
+
+caractère => char => un caractère
+entier court => short => petit nombre
+entier => int => nombre (sans virgule)
+entier long => long => gros nombre
+caractère non signé => unsigned char => byte
+entier court non signé => unsigned short int => petit nombre strictement positif (sans virgule)
+float => chiffre à virgule
+double => chiffre à virgule plus précis
+
+Quel est le principe/rôle du casting en C ?
+Le casting en C consiste à changer explicitement le type de données d'une variable ou d'une expression. 
+
+C’est quoi une constante en C ? Peux-tu en citer 2 de types différents ?
+Permet de définir une variable (adresse en mémoire) dont la valeur ne change pas durant l’exécution.
+
+Quelles sont les fonctions usuelles où il est nécessaire de préciser le type de variable à utiliser ?
+Malloc, realloc, calloc & sizeof, sin(), cos() et tan(), strlen() et strcpy(), 
+
+Alternatives, boucles et fonctions
+
+Citer les principaux éléments d’une boucle
+- La boucle en elle-même définit par for, while,do-while
+- la condition de boucle, évalué a chaque itération
+- le compteur de boucle, suivre le nombre d'itération de la boucle
+- le corps de la boucle, ensemble des instructions qui sont exécutées
+
+Quelles différences entre une boucle while et for ?
+
+while : 
+Utilisée généralement lorsque le nombre d’itération n’est pas connu à l’avance.
+
+Nécessite un changement d’état à l’intérieur de la boucle.
+
+for
+Utilisée généralement lorsque le nombre d’itération est connu.
+
+La condition d’arrêt et le changement d’état sont définis dans la même instruction.
+
+C’est quoi l’alternative switch en C ? A quoi ça sert ?
+
+c'est par exemple if elif else  ou case. permet de sélectionner l'exécution d'un bloc parmis plusieurs possible.
+
+Quels sont les principaux éléments d’une fonction ?
+
+le nom de la fonction
+le type de retour
+les paramètre
+le corps de la fonction
+
+À quoi sert un prototype de fonction en C ?
+
+Un prototype de fonction en C est une déclaration de fonction qui fournit au compilateur les informations nécessaires pour vérifier que les appels de fonction sont corrects. Il indique le nom de la fonction, le type de retour de la fonction et la liste des arguments attendus par la fonction.
+
+Les tableaux
+
+Définis un tableau en C ? Quelles sont ses principales caractéristiques ?
+Un tableau est une structure de données représentant une séquence finie d'éléments auxquels on peut accéder efficacement par leur position/indice
+
+- type
+- nom 
+- taille
+
+Comment ferais-tu pour retourner un tableau modifié dans une fonction ?
+à l'aide d'un pointeur
+
+Comment ferais-tu pour définir la taille d’un tableau après la compilation ?
+Par de l’allocation dynamique (malloc - realloc) en utilisant les pointeurs.
+
+Les structures
+
+Explique avec tes mots ce qu’est une structure en C
+Une structure en C est un type de données qui permet de regrouper plusieurs variables de différents types sous un même nom. 
+
+Quelle est la différence entre un tableau et une structure ?
+Un tableau ne peut contenir qu’un seul et même type de donnée contrairement à une structure.
+
+
+Les pointeurs
+
+Expliquer ce qu’est un pointeur en C
+Un pointeur est une variable qui contient une adresse mémoire: 
+- à cette adresse, on retrouvera généralement la valeur d’une autre variable.
+- on peut accéder directement à cette valeur en utilisant le pointeur.
+
+À quelles limitations du langage les pointeurs permettent-ils de répondre ?
+
+Paramètres de fonction accessibles en écriture.
+Allocation de mémoire dynamique (tableaux à tailles variables, listes chaînées,etc).
+
+En quoi consiste les opérations sur des variables de type pointeur ?
+
+Les opérations sur les pointeurs sont essentiellement des opérations sur les adresses:
+
+Addition et soustraction: on ajoute ou on supprime des octets dans l’adresse
+contenue dans un pointeur.
+<, >, = Permet de vérifier si une adresse est inférieure, supérieure ou égale à
+celle comparée.
+Se déplacer.
+
+Comment récupérer la valeur d’une variable pointée ?
+À l’aide de l’opérateur *
+
+Arguments et allocation dynamique
+
+Expliquer avec tes mots le rôle des arguments en C ?
+
+Récupérer (et faire des actions) par rapport à ce qui est passé au programme
+lorsqu’on l’exécute. Ce qui fait gagner en flexibilité.
+
+En quoi consiste argv et argc dans les paramètres d’une fonction main ?
+
+argv (arg vector) → Tableau de pointeurs vers des chaînes de caractères
+contenant les arguments.
+
+argc (arg count) → Entier correspond au nombre d’arguments présents dans le
+tableau argv.
+
+À quoi sert l’allocation dynamique ?
+
+Allouer de la mémoire au fur et à mesure de l’exécution du programme quand la taille ne peut pas être connu avant l’exécution.
+
+Citer différents risques liés à l’allocation dynamique de mémoire
+
+Oublier de “relâcher” la mémoire.
+
+La stack et la heap peuvent se rencontrer (plus de mémoire disponible pour l’exécution d’un programme, le pointeur est null).
+
+Les entrées/sorties
+
+Donner les différents flux E/S standard utilisés par un programme C
+
+stdin (entrée)
+
+stdout (sortie)
+
+stderr (sortie, pour les erreurs)
+
+Citer une fonction alternative à scanf. Qu’est-ce que cette fonction apporte de différent ?
+
+fgets => limite la taille du flux entrant afin d'éviter le buffer overflow
+
+
+Quels sont les paramètres à utiliser pour ouvrir un fichier en C ?
+
+La fonction prend comme paramètre:
+
+un pointeur vers une chaine constante représentant le nom du fichier à ouvrir.
+
+Un pointeur vers une chaine de caractère constante représentant le mode d’ouverture du fichier.
+
+Les sockets
+
+Expliquer comment se caractérise la différence TCP/UDP dans les sockets en C
+
+Expliquer le rôle de la fonction « bind() »
+
+Réserver un port sur la machine en liant le socket à la structure sockaddr.
+
+Expliquer le rôle de la fonction « accept() » dans le contexte des sockets
+
+Permet d’accepter une demande de connexion dans le contexte de TCP.
+
+La récursivité
+Expliquer ce qu’est la récursivité dans le contexte de la programmation
+
+Technique consistant à remplacer l’usage de boucle par des appels de fonction
+(fonction s’appelant elle-même).
+
+Chiffrement
+
+Quel est la différence entre un chiffrement symétrique et asymétrique ?
+
+Symétrique: Utilisation d’une seule et même clé pour chiffre/déchiffrer.
+
+Asymétrique: Utilisation d’une clé pour chiffrer (clé publique) et d’une autre clé pour
+déchiffrer (clé privée).
+
+Quel est le rôle de la fonction EncryptFinal dans la librairie OpenSSL/EVP ?
+
+Ajouter le padding nécessaire pour compléter le dernier bloc.
+
+Quelle est l’utilité d’appeler plusieurs fois la fonction EncryptUpdate pour chiffrer un fichier ?
+
+Découper le message à chiffrer en différentes parties.
+
+Quelle fonction permet de générer une clé aléatoire ? Dans quel format est produit cette clé ?
+
+RAND_bytes, La clé produite est sous forme de bytes (unsigned char).
+
+Pourquoi doit-on utiliser un vecteur d’initialisation avec AESCBC ?
+
+Car le Cipher Block Chaining applique sur chaque bloc un OU exclusif avec lechiffrement du bloc précédent. Le vecteur d’initialisation (iv) sert donc de valeur du
+bloc “précédent” pour le premier bloc.
+
+Quelle est la taille d’un bloc que AES peut chiffrer ?
+
+Maximum 128 bits (16 bytes).
